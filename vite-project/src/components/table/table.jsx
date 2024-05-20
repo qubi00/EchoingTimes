@@ -15,16 +15,16 @@ return (
         <table>
             <thead>
                 <tr>
-                    <th>lccn</th>
-                    <th>url</th>
-                    <th>state</th>
-                    <th>title</th>
+                    <th>Iccn</th>
+                    <th>Url</th>
+                    <th>State</th>
+                    <th>Title</th>
                 </tr>
             </thead>
             <tbody>
                 {newsData.map((item, id) => (
                     <tr key={id}>
-                        <td>{item.lccn}</td>
+                        <td>{item.iccn}</td>
                         <td>{item.url}</td>
                         <td>{item.state}</td>
                         <td>{item.title}</td>
