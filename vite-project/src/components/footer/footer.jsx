@@ -3,7 +3,7 @@ import "./footer.css";
 function Footer() {
     return (
         <nav className="footer">
-            copyright 2024
+            &copy;Copyright 2024
         </nav>
     );
 }
