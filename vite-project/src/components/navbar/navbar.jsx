@@ -33,7 +33,7 @@ function Navbar() {
                     </Link>
                     <div style={{ flexGrow: 1 }} />
                     <Link to="/community" className = "community">
-                        Community
+                        Join our Community
                     </Link>
                     <Link to="/info" className = "about">
                         About

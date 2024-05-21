@@ -3,21 +3,6 @@
     width: 100%;
     border-collapse: collapse;
 }
-.header{
-    background-color: blue;
-}
-th, td {
-    border: 1px solid #ff0000;
-    padding: 8px;
-    overflow: hidden;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-}
-
-th {
-    background-color: blue; 
-    width: 25%;
-}
 
 .lccn-search {
     margin-bottom: 10px;

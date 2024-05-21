@@ -12,6 +12,23 @@ app.use(bodyParser.json());
 
 const PORT = process.env.PORT || 3000;
 
+//API
+app.get('/news', async (req, res) => {
+    try{
+        const response = await fetch('https://chroniclingamerica.loc.gov/newspapers.json',{
+         method: 'GET'
+    });
+    if(!response.ok){
+        throw new Error('Cant fetch news from API');
+    }
+    const data = await response.json();
+    res.json(data);
+    }catch(error){
+        console.error(error)
+        res.status(500).json({message: 'error'})
+    }
+});
+//MONGODB
 const mongourl = process.env.MONGO_URL
 const mongoclient = new MongoClient(mongourl, {});
 

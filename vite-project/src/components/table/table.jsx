@@ -1,16 +1,14 @@
 import { useEffect, useState } from 'react'
 import './table.css'
 
+const API_URL = 'http://localhost:3000/news';
 function Table(){
     const [newsData, setNewsData] = useState([]);
     const [stateFilter, setStateFilter] = useState('');
     const [lccnFilter, setLccnFilter] = useState('');
 
     useEffect(() => {
-        const corsProxy = 'https://cors-anywhere.herokuapp.com/';
-        const url = 'https://chroniclingamerica.loc.gov/newspapers.json';
-        
-        fetch(corsProxy + url)
+        fetch(API_URL)
             .then(response => response.json())
             .then(data => setNewsData(data.newspapers));
     }, []);
@@ -32,7 +30,7 @@ return (
       onChange={(e) => setStateFilter(e.target.value.toLowerCase())}
     />
         <table className = "table">
-            <thead className = "header">
+            <thead className = "table-header">
                 <tr>
                     <th>Lccn</th>
                     <th>Url</th>

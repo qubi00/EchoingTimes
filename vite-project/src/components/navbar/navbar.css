@@ -22,12 +22,13 @@
 
 .community {
     align-items: right;
-    padding: 10px;
+    padding: 20px;
     text-decoration: none;
     color: white;
 }
 
 .about{
     text-decoration: none;
+    padding: 10px;
     color:white;
 }
