@@ -16,6 +16,22 @@
     font-size: 20px;
 }
 
+.community-table{
+    padding: 200px;
+}
+
+.table-name{
+    width:50%
+}
+
+.table-email{
+    width:50%;
+}
+
+.userEmail{
+    width:50%;
+}
+
 .pagesort{
     text-align: center;
 }
@@ -27,6 +43,6 @@ th, td {
     white-space: nowrap;
 }
 th {
-    background-color: rgb(255, 0, 0); 
-    width: 25%;
+    background-color: rgb(255, 255, 255); 
+    width: 50%;
 }

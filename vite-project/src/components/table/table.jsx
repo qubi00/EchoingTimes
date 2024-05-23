@@ -1,22 +1,27 @@
 import { useEffect, useState } from 'react'
 import './table.css'
 
-const API_URL = 'http://localhost:3000/news';
+const PORT = import.meta.env.VITE_NEWS_PORT;
 function Table(){
     const [newsData, setNewsData] = useState([]);
     const [stateFilter, setStateFilter] = useState('');
     const [lccnFilter, setLccnFilter] = useState('');
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
-        fetch(API_URL)
+        fetch(PORT)
             .then(response => response.json())
-            .then(data => setNewsData(data.newspapers));
+            .then(data => {setNewsData(data.newspapers); setLoading(false)});
     }, []);
-
     const filteredData = newsData.filter((item) => 
         (item.state && item.state.toLowerCase().includes(stateFilter.toLowerCase())) &&
     (item.lccn && item.lccn.toLowerCase().includes(lccnFilter.toLowerCase()))
     );
+if(loading){
+    return(
+        <div className = "loading ">Loading...</div>
+    )
+}
 return (
     <div className="tableSearch">
     <input

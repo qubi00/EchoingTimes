@@ -10,12 +10,13 @@ const app = express();
 app.use(cors());
 app.use(bodyParser.json());
 
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT;
+const API_URL = process.env.API_URL;
 
 //API
 app.get('/news', async (req, res) => {
     try{
-        const response = await fetch('https://chroniclingamerica.loc.gov/newspapers.json',{
+        const response = await fetch(API_URL,{
          method: 'GET'
     });
     if(!response.ok){
@@ -36,12 +37,35 @@ mongoclient.connect().then(() => {
     console.log('Connected to MongoDB')
 })
 
-app.get('/', (req, res) => {
-    res.send('/')
-})
+app.get('/users', async (req, res) => {
+    try{
+        const users = await mongoclient.db('Echoing-Times').collection('users').find({}).sort({dateJoined: -1}).toArray();
+        
+        res.status(200).json(users)
+    }catch(error){
+        console.error(error)
+        res.status(500).json({message: 'error'})
+    }
+});
 
-app.get('/hello', (req, res) => {
-    res.send('Hello World!')
+app.post('/add-user', async (req, res) =>{
+    try{
+        const user = req.body
+
+        if (!user.name || !user.email || !user.dateJoined ||
+            Object.keys(user).length !== 3) {
+            res.status(400).send('Invalid Sign Up');
+            return;
+        }
+    
+        const result = await mongoclient.db('Echoing-Times').collection('users').insertOne(user);
+        const userAdded = await mongoclient.db('Echoing-Times').collection('users').findOne({ _id: result.insertedId });
+        //201 => creation
+        res.status(201).json(userAdded)
+    }catch (error){
+        console.error(error)
+        res.status(500).json({ message: 'error'})
+    }
 })
 
 app.listen(PORT, () => {
