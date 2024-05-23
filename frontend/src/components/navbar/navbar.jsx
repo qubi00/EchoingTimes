@@ -28,7 +28,7 @@ function Navbar() {
                                 textDecoration: 'none',
                             }}
                         >
-                            Echoing Times
+                            EchoingTimes
                         </Typography>
                     </Link>
                     <div style={{ flexGrow: 1 }} />

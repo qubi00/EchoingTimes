@@ -25,10 +25,20 @@
     padding: 20px;
     text-decoration: none;
     color: white;
+    transition: all 0ms ease-in-out;
 }
 
 .about{
     text-decoration: none;
     padding: 10px;
     color:white;
+    transition: all 0ms ease-in-out;
+}
+
+.community:hover {
+    color:yellow;
+}
+
+.about:hover{
+    color:yellow;
 }
